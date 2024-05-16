@@ -1,5 +1,11 @@
+import { PageMain } from "./components/PageMain";
+
 const App = () => {
-	return <div>działa</div>;
+	return (
+		<>
+			<PageMain />
+		</>
+	);
 };
 
 export { App };
