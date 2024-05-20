@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-
 type Props = {
-	startMainCounter: boolean;
+	startCurrentCounter: boolean;
 };
 
-const MainCounter = ({ startMainCounter }: Props) => {
+const CurrentCounter = ({ startCurrentCounter }: Props) => {
 	const [minutes, setMinutes] = useState(0);
 	const [seconds, setSeconds] = useState(0);
 	const [milliseconds, setMilliseconds] = useState(0);
@@ -15,10 +14,10 @@ const MainCounter = ({ startMainCounter }: Props) => {
 		}, 100);
 
 		return () => clearInterval(interval);
-	}, [startMainCounter, milliseconds]);
+	}, [startCurrentCounter, milliseconds]);
 
 	const handleStopwatch = () => {
-		if (!startMainCounter) return;
+		if (!startCurrentCounter) return;
 		if (milliseconds >= 9) {
 			setMilliseconds(0);
 			if (seconds >= 59) {
@@ -34,7 +33,7 @@ const MainCounter = ({ startMainCounter }: Props) => {
 
 	return (
 		<>
-			<h1>Total time:</h1>
+			<h2>Current time:</h2>
 			<div>
 				{minutes > 9 ? minutes : `0${minutes}`}:
 				{seconds > 9 ? seconds : `0${seconds}`}:
@@ -44,4 +43,4 @@ const MainCounter = ({ startMainCounter }: Props) => {
 	);
 };
 
-export { MainCounter };
+export { CurrentCounter };
