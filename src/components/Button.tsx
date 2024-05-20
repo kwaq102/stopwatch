@@ -7,7 +7,7 @@ type Props = {
 
 const Button = ({ text, handleButton }: Props) => {
 	const startStopCounter = () => {
-		handleButton(prev => !prev);
+		handleButton(true);
 	};
 	return <button onClick={startStopCounter}>{text}</button>;
 };
