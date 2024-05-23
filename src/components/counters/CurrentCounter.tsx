@@ -1,19 +1,27 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 type Props = {
 	startCurrentCounter: boolean;
 	startValue: number;
 	changeValue: boolean;
+	minutes: number;
+	seconds: number;
+	milliseconds: number;
+	handleMinutes: Dispatch<SetStateAction<number>>;
+	handleSeconds: Dispatch<SetStateAction<number>>;
+	handleMilliseconds: Dispatch<SetStateAction<number>>;
 };
 
 const CurrentCounter = ({
 	startCurrentCounter,
 	startValue,
 	changeValue,
+	minutes,
+	seconds,
+	milliseconds,
+	handleMinutes,
+	handleMilliseconds,
+	handleSeconds,
 }: Props) => {
-	const [minutes, setMinutes] = useState(startValue);
-	const [seconds, setSeconds] = useState(startValue);
-	const [milliseconds, setMilliseconds] = useState(startValue);
-
 	useEffect(() => {
 		const interval = setInterval(() => {
 			handleStopwatch();
@@ -23,34 +31,34 @@ const CurrentCounter = ({
 	}, [startCurrentCounter, milliseconds, startValue]);
 
 	useEffect(() => {
-		setMinutes(startValue);
-		setSeconds(startValue);
-		setMilliseconds(startValue);
+		handleMinutes(startValue);
+		handleSeconds(startValue);
+		handleMilliseconds(startValue);
 	}, [changeValue]);
 
 	const handleStopwatch = () => {
 		if (!startCurrentCounter) return;
 		if (milliseconds >= 9) {
-			setMilliseconds(0);
+			handleMilliseconds(0);
 			if (seconds >= 59) {
-				setSeconds(0);
-				setMinutes(prev => prev + 1);
+				handleSeconds(0);
+				handleMinutes(prev => prev + 1);
 			} else {
-				setSeconds(prev => prev + 1);
+				handleSeconds(prev => prev + 1);
 			}
 		} else {
-			setMilliseconds(prev => prev + 1);
+			handleMilliseconds(prev => prev + 1);
 		}
 	};
 
 	return (
 		<>
 			<h2>Current time:</h2>
-			<div>
+			<p>
 				{minutes > 9 ? minutes : `0${minutes}`}:
 				{seconds > 9 ? seconds : `0${seconds}`}:
 				{milliseconds > 9 ? milliseconds : `0${milliseconds}`}
-			</div>
+			</p>
 		</>
 	);
 };

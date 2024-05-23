@@ -1,9 +1,17 @@
 import { TableElement } from "./TableElement";
 
-const Table = () => {
+type Props = {
+	lapsAmount: number;
+	times: string[];
+};
+
+const Table = ({ lapsAmount, times }: Props) => {
 	return (
 		<>
-			<div>TU bedzie jakaś tabela</div>
+			<p>
+				Okrążenie {lapsAmount} czas: {times[times.length - 1]}
+			</p>
+
 			<TableElement />
 			<TableElement />
 			<TableElement />

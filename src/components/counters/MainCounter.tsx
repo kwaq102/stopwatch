@@ -25,6 +25,7 @@ const MainCounter = ({ startMainCounter, startValue, changeValue }: Props) => {
 		setMilliseconds(startValue);
 	}, [changeValue]);
 
+	//TODO to można spróbować to jednej funkcji to samo jest w CurrentCounter
 	const handleStopwatch = () => {
 		if (!startMainCounter) return;
 		if (milliseconds >= 9) {
