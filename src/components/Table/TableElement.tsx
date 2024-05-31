@@ -1,8 +1,16 @@
-const TableElement = () => {
+type Props = {
+	lapsAmount: number;
+	time: string;
+};
+
+const TableElement = ({ lapsAmount, time }: Props) => {
 	return (
-		<>
-			<div>Pojedynczy element tabelki</div>
-		</>
+		<tr>
+			<th>{lapsAmount}</th>
+			<td>
+				time: <strong>{time}</strong>
+			</td>
+		</tr>
 	);
 };
 

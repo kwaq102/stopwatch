@@ -15,7 +15,7 @@ const PageMain = () => {
 	const [startValue, setStartValue] = useState(0);
 	// const [changeValue, setChangeValue] = useState(false);
 
-	const [lapsAmount, setLapsAmount] = useState(0);
+	// const [lapsAmount, setLapsAmount] = useState(0);
 
 	const [minutes, setMinutes] = useState(startValue);
 	const [seconds, setSeconds] = useState(startValue);
@@ -56,13 +56,12 @@ const PageMain = () => {
 
 				<ButtonLap
 					text="Lap"
-					handleLapsAmount={setLapsAmount}
 					handleValueCurrent={setStartCurrentCounter}
 					lapTime={lapTime}
 					addLapTime={setTimes}
 				/>
 
-				<Table lapsAmount={lapsAmount} times={times} />
+				<Table times={times} />
 				<Summary />
 			</main>
 		</div>

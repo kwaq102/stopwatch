@@ -1,21 +1,24 @@
 import { TableElement } from "./TableElement";
 
 type Props = {
-	lapsAmount: number;
 	times: string[];
 };
 
-const Table = ({ lapsAmount, times }: Props) => {
+const Table = ({ times }: Props) => {
 	return (
-		<>
-			<p>
-				Okrążenie {lapsAmount} czas: {times[times.length - 1]}
-			</p>
-
-			<TableElement />
-			<TableElement />
-			<TableElement />
-		</>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Laps</th>
+					<th scope="col">Times</th>
+				</tr>
+			</thead>
+			<tbody>
+				{...times.map((el, i) => (
+					<TableElement key={i} lapsAmount={i + 1} time={el} />
+				))}
+			</tbody>
+		</table>
 	);
 };
 
