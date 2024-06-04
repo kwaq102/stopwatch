@@ -1,12 +1,18 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 type Props = {
 	startMainCounter: boolean;
 	startValue: number;
 	changeValue: boolean;
+	handleFullTime: Dispatch<SetStateAction<string>>;
 };
 
-const MainCounter = ({ startMainCounter, startValue, changeValue }: Props) => {
+const MainCounter = ({
+	startMainCounter,
+	startValue,
+	changeValue,
+	handleFullTime,
+}: Props) => {
 	const [minutes, setMinutes] = useState(startValue);
 	const [seconds, setSeconds] = useState(startValue);
 	const [milliseconds, setMilliseconds] = useState(startValue);
@@ -41,13 +47,20 @@ const MainCounter = ({ startMainCounter, startValue, changeValue }: Props) => {
 		}
 	};
 
+	const fullTime = `${minutes > 9 ? minutes : `0${minutes}`} : ${
+		seconds > 9 ? seconds : `0${seconds}`
+	} : ${milliseconds > 9 ? milliseconds : `0${milliseconds}`}`;
+
+	handleFullTime(fullTime);
+
 	return (
 		<>
 			<h1>Total time:</h1>
 			<div>
-				{minutes > 9 ? minutes : `0${minutes}`}:
+				{fullTime}
+				{/* {minutes > 9 ? minutes : `0${minutes}`}:
 				{seconds > 9 ? seconds : `0${seconds}`}:
-				{milliseconds > 9 ? milliseconds : `0${milliseconds}`}
+				{milliseconds > 9 ? milliseconds : `0${milliseconds}`} */}
 			</div>
 		</>
 	);
