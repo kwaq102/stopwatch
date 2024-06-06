@@ -2,14 +2,14 @@ import { Dispatch, SetStateAction } from "react";
 
 type Props = {
 	text: string;
-	handleValueMain: Dispatch<SetStateAction<boolean>>;
-	handleValueCurrent: Dispatch<SetStateAction<boolean>>;
+	handleValueMain: Dispatch<SetStateAction<number>>;
+	handleValueCurrent: Dispatch<SetStateAction<number>>;
 };
 
 const ButtonReset = ({ text, handleValueMain, handleValueCurrent }: Props) => {
 	const resetValue = () => {
-		handleValueMain(prev => !prev);
-		handleValueCurrent(prev => !prev);
+		handleValueMain(0);
+		handleValueCurrent(0);
 	};
 	return <button onClick={resetValue}>{text}</button>;
 };

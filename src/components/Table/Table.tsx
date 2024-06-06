@@ -1,7 +1,8 @@
+import { formatTime } from "../../assets/functions";
 import { TableElement } from "./TableElement";
 
 type Props = {
-	times: string[];
+	times: number[];
 };
 
 const Table = ({ times }: Props) => {
@@ -15,7 +16,7 @@ const Table = ({ times }: Props) => {
 			</thead>
 			<tbody>
 				{...times.map((el, i) => (
-					<TableElement key={i} lapsAmount={i + 1} time={el} />
+					<TableElement key={i} lapsAmount={i + 1} time={formatTime(el)} />
 				))}
 			</tbody>
 		</table>

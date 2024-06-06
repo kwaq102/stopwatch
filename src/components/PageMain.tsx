@@ -10,27 +10,18 @@ import { ButtonStop } from "./ButtonStop";
 
 const PageMain = () => {
 	const [startAll, setStartAll] = useState(false);
-	const [startMainCounter, setStartMainCounter] = useState(false);
-	const [startCurrentCounter, setStartCurrentCounter] = useState(false);
-
-	const [startValue, setStartValue] = useState(0);
-	// const [changeValue, setChangeValue] = useState(false);
-
-	// const [lapsAmount, setLapsAmount] = useState(0);
 
 	const [hidden, setHidden] = useState(false);
 
-	const [minutes, setMinutes] = useState(startValue);
-	const [seconds, setSeconds] = useState(startValue);
-	const [milliseconds, setMilliseconds] = useState(startValue);
+	const [globalMilisec, setGlobalMilisec] = useState(0);
+	const [currentMilisec, setCurrentMilisec] = useState(0);
 
 	const [fullTime, setFullTime] = useState("");
 
-	const [times, setTimes] = useState<string[]>([]);
+	//Array with lap times by milliseconds
+	const [times, setTimes] = useState<number[]>([]);
 
-	const lapTime = `${minutes > 9 ? minutes : `0${minutes}`} : ${
-		seconds > 9 ? seconds : `0${seconds}`
-	} : ${milliseconds > 9 ? milliseconds : `0${milliseconds}`}`;
+	const lapTime = currentMilisec;
 
 	const hide = () => {
 		setHidden(true);
@@ -45,35 +36,29 @@ const PageMain = () => {
 				{!hidden && (
 					<MainCounter
 						startMainCounter={startAll}
-						startValue={startValue}
-						changeValue={startMainCounter}
 						handleFullTime={setFullTime}
+						handleGlobalMilisec={setGlobalMilisec}
+						globalMiliSec={globalMilisec}
 					/>
 				)}
 
 				{!hidden && (
 					<CurrentCounter
 						startCurrentCounter={startAll}
-						startValue={startValue}
-						changeValue={startCurrentCounter}
-						minutes={minutes}
-						seconds={seconds}
-						milliseconds={milliseconds}
-						handleMinutes={setMinutes}
-						handleSeconds={setSeconds}
-						handleMilliseconds={setMilliseconds}
+						handleCurrentMilisec={setCurrentMilisec}
+						currentMilisec={currentMilisec}
 					/>
 				)}
 				<Button text="Start" handleButton={setStartAll} />
 				<ButtonReset
 					text="Reset"
-					handleValueMain={setStartMainCounter}
-					handleValueCurrent={setStartCurrentCounter}
+					handleValueMain={setGlobalMilisec}
+					handleValueCurrent={setCurrentMilisec}
 				/>
 
 				<ButtonLap
 					text="Lap"
-					handleValueCurrent={setStartCurrentCounter}
+					handleValueCurrent={setCurrentMilisec}
 					lapTime={lapTime}
 					addLapTime={setTimes}
 				/>
@@ -81,13 +66,7 @@ const PageMain = () => {
 				<ButtonStop hide={hide} />
 
 				{!hidden && <Table times={times} />}
-				{hidden && (
-					<Summary
-						times={times}
-						fullTime={fullTime}
-						miliseconds={milliseconds}
-					/>
-				)}
+				{hidden && <Summary times={times} />}
 			</main>
 		</div>
 	);

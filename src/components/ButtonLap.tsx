@@ -2,9 +2,9 @@ import { Dispatch, SetStateAction } from "react";
 
 type Props = {
 	text: string;
-	lapTime: string;
-	handleValueCurrent: Dispatch<SetStateAction<boolean>>;
-	addLapTime: Dispatch<SetStateAction<string[]>>;
+	lapTime: number;
+	handleValueCurrent: Dispatch<SetStateAction<number>>;
+	addLapTime: Dispatch<SetStateAction<number[]>>;
 };
 
 const ButtonLap = ({
@@ -15,7 +15,7 @@ const ButtonLap = ({
 }: Props) => {
 	const addLap = () => {
 		addLapTime(prev => [...prev, lapTime]);
-		handleValueCurrent(prev => !prev);
+		handleValueCurrent(0);
 	};
 
 	return <button onClick={addLap}>{text}</button>;

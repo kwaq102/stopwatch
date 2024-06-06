@@ -13,7 +13,7 @@ export const formatTime = (ms: number) => {
     return `${formattedMinutes}:${formattedSeconds}:${formattedMilliseconds}`;
 };
 
-export const sortTimes = (arr: string[]) => {
+export const sortTimes = (arr: number[]) => {
     return arr.sort((a, b) => {
         if (a < b) {
             return -1;
@@ -24,3 +24,7 @@ export const sortTimes = (arr: string[]) => {
         }
     });
 };
+
+// export const sum = (array) => {
+//     return array.reduce((prevEl, currentEl) => prevEl + currentEl, 0)
+// }

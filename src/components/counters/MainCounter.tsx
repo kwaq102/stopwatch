@@ -1,67 +1,43 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { formatTime } from "../../assets/functions";
 
 type Props = {
 	startMainCounter: boolean;
-	startValue: number;
-	changeValue: boolean;
 	handleFullTime: Dispatch<SetStateAction<string>>;
+	globalMiliSec: number;
+	handleGlobalMilisec: Dispatch<SetStateAction<number>>;
 };
 
 const MainCounter = ({
 	startMainCounter,
-	startValue,
-	changeValue,
-	handleFullTime,
+	globalMiliSec,
+	handleGlobalMilisec,
 }: Props) => {
-	const [minutes, setMinutes] = useState(startValue);
-	const [seconds, setSeconds] = useState(startValue);
-	const [milliseconds, setMilliseconds] = useState(startValue);
+	const [milliseconds, setMilliseconds] = useState(0);
 
 	useEffect(() => {
 		const interval = setInterval(() => {
 			handleStopwatch();
-		}, 100);
+		}, 10);
 
 		return () => clearInterval(interval);
-	}, [startMainCounter, milliseconds, startValue]);
+	}, [startMainCounter, milliseconds]);
 
 	useEffect(() => {
-		setMinutes(startValue);
-		setSeconds(startValue);
-		setMilliseconds(startValue);
-	}, [changeValue]);
+		setMilliseconds(0);
+	}, []);
 
 	//TODO to można spróbować to jednej funkcji to samo jest w CurrentCounter
 	const handleStopwatch = () => {
 		if (!startMainCounter) return;
-		if (milliseconds >= 99) {
-			setMilliseconds(0);
-			if (seconds >= 59) {
-				setSeconds(0);
-				setMinutes(prev => prev + 1);
-			} else {
-				setSeconds(prev => prev + 1);
-			}
-		} else {
-			setMilliseconds(prev => prev + 1);
-		}
+
+		handleGlobalMilisec(prev => prev + 10);
 	};
-
-	const fullTime = `${minutes > 9 ? minutes : `0${minutes}`} : ${
-		seconds > 9 ? seconds : `0${seconds}`
-	} : ${milliseconds > 9 ? milliseconds : `0${milliseconds}`}`;
-
-	handleFullTime(fullTime);
 
 	return (
 		<>
 			<h1>Total time:</h1>
-			<div>
-				{fullTime}
-				{/* {minutes > 9 ? minutes : `0${minutes}`}:
-				{seconds > 9 ? seconds : `0${seconds}`}:
-				{milliseconds > 9 ? milliseconds : `0${milliseconds}`} */}
-			</div>
+			<div>{formatTime(globalMiliSec)}</div>
 		</>
 	);
 };
