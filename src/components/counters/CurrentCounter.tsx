@@ -25,7 +25,7 @@ const CurrentCounter = ({
 	useEffect(() => {
 		const interval = setInterval(() => {
 			handleStopwatch();
-		}, 100);
+		}, 10);
 
 		return () => clearInterval(interval);
 	}, [startCurrentCounter, milliseconds, startValue]);
@@ -38,7 +38,7 @@ const CurrentCounter = ({
 
 	const handleStopwatch = () => {
 		if (!startCurrentCounter) return;
-		if (milliseconds >= 9) {
+		if (milliseconds >= 99) {
 			handleMilliseconds(0);
 			if (seconds >= 59) {
 				handleSeconds(0);

@@ -34,7 +34,7 @@ const MainCounter = ({
 	//TODO to można spróbować to jednej funkcji to samo jest w CurrentCounter
 	const handleStopwatch = () => {
 		if (!startMainCounter) return;
-		if (milliseconds >= 9) {
+		if (milliseconds >= 99) {
 			setMilliseconds(0);
 			if (seconds >= 59) {
 				setSeconds(0);

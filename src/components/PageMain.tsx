@@ -81,7 +81,13 @@ const PageMain = () => {
 				<ButtonStop hide={hide} />
 
 				{!hidden && <Table times={times} />}
-				{hidden && <Summary times={times} fullTime={fullTime} />}
+				{hidden && (
+					<Summary
+						times={times}
+						fullTime={fullTime}
+						miliseconds={milliseconds}
+					/>
+				)}
 			</main>
 		</div>
 	);
