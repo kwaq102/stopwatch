@@ -1,16 +1,21 @@
 export const formatTime = (ms: number) => {
-    // Oblicz godziny, minuty, sekundy i milisekundy
-    const minutes = Math.floor((ms % 3600000) / 60000);
-    const seconds = Math.floor((ms % 60000) / 1000);
-    const milliseconds = ms % 1000
+    let minutes = Math.floor((ms % 3600000) / 60000);
+    let seconds = Math.floor((ms % 60000) / 1000);
+    let milliseconds = ms % 1000
 
-    // Sformatuj wyniki z dodaniem wiodących zer, jeśli potrzeba
+    if (isNaN(minutes) || isNaN(seconds) || isNaN(milliseconds)) {
+        minutes = 0;
+        seconds = 0;
+        milliseconds = 0;
+    }
+
     const formattedMinutes = String(minutes).padStart(2, "0");
     const formattedSeconds = String(seconds).padStart(2, "0");
     const formattedMilliseconds = String(Math.round(milliseconds / 10)).padStart(2, "0");
 
-    // Złóż wszystko w jeden string
-    return `${formattedMinutes}:${formattedSeconds}:${formattedMilliseconds}`;
+    const time = `${formattedMinutes}:${formattedSeconds}:${formattedMilliseconds}`
+
+    return time;
 };
 
 export const sortTimes = (arr: number[]) => {

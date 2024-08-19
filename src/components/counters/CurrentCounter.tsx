@@ -7,6 +7,8 @@ type Props = {
 	handleCurrentMilisec: Dispatch<SetStateAction<number>>;
 };
 
+// TODO ZROBIĆ WŁASNY HOOK LICZNIKA I GO UŻYĆ (TAK JAK NP. W LEKCJI 60 O WŁASNYCH HOOKACH)
+
 const CurrentCounter = ({
 	startCurrentCounter,
 
