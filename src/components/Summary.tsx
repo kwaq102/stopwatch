@@ -26,11 +26,10 @@ const Summary = ({ times }: Props) => {
 		<>
 			<div>
 				<p>czas łączny: {formatTime(summaryTime())}</p>
-				<p>średni czas okrążenia: {formatTime(averageTime()) || 0}</p>
-				<p>najszybszy czas okrążenia: {formatTime(times[0]) || 0}</p>
+				<p>średni czas okrążenia: {formatTime(averageTime())}</p>
+				<p>najszybszy czas okrążenia: {formatTime(times[0])}</p>
 				<p>
-					najwolniejszy czas okrążenia:{" "}
-					{formatTime(times[times.length - 1]) || 0}
+					najwolniejszy czas okrążenia: {formatTime(times[times.length - 1])}
 				</p>
 				<p>Liczba okrążeń: {times.length}</p>
 				<div>
@@ -38,6 +37,13 @@ const Summary = ({ times }: Props) => {
 						<p key={i}>{formatTime(time)}</p>
 					))}
 				</div>
+				<button
+					onClick={() => {
+						window.location.reload();
+					}}
+				>
+					Refresh
+				</button>
 			</div>
 		</>
 	);

@@ -10,9 +10,7 @@ import { ButtonStop } from "./ButtonStop";
 
 const PageMain = () => {
 	const [startAll, setStartAll] = useState(false);
-
 	const [hidden, setHidden] = useState(false);
-
 	const [globalMilisec, setGlobalMilisec] = useState(0);
 	const [currentMilisec, setCurrentMilisec] = useState(0);
 
@@ -61,6 +59,7 @@ const PageMain = () => {
 					handleValueCurrent={setCurrentMilisec}
 					lapTime={lapTime}
 					addLapTime={setTimes}
+					hiddenTable={hidden}
 				/>
 
 				<ButtonStop hide={hide} />

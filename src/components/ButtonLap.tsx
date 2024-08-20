@@ -5,6 +5,7 @@ type Props = {
 	lapTime: number;
 	handleValueCurrent: Dispatch<SetStateAction<number>>;
 	addLapTime: Dispatch<SetStateAction<number[]>>;
+	hiddenTable: boolean;
 };
 
 const ButtonLap = ({
@@ -12,8 +13,10 @@ const ButtonLap = ({
 	handleValueCurrent,
 	lapTime,
 	addLapTime,
+	hiddenTable,
 }: Props) => {
 	const addLap = () => {
+		if (hiddenTable) return;
 		addLapTime(prev => [...prev, lapTime]);
 		handleValueCurrent(0);
 	};
