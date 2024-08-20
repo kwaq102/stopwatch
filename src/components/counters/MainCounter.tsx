@@ -34,8 +34,8 @@ const MainCounter = ({
 
 	return (
 		<>
-			<h1>Total time:</h1>
-			<div>{formatTime(globalMiliSec)}</div>
+			<h2 className="totalTimeHeading">Total time:</h2>
+			<div className="totalTime">{formatTime(globalMiliSec)}</div>
 		</>
 	);
 };

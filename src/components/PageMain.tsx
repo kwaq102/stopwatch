@@ -7,6 +7,7 @@ import { Button } from "./Button";
 import { ButtonReset } from "./ButtonReset";
 import { ButtonLap } from "./ButtonLap";
 import { ButtonStop } from "./ButtonStop";
+import "../styles/index.scss";
 
 const PageMain = () => {
 	const [startAll, setStartAll] = useState(false);
@@ -25,9 +26,9 @@ const PageMain = () => {
 	};
 
 	return (
-		<div>
-			<h1>Home</h1>
-			<main>
+		<div className="pageMain">
+			<h1 className="pageMainHeading">Stopwatch</h1>
+			<main className="content">
 				{!hidden && (
 					<MainCounter
 						startMainCounter={startAll}
@@ -44,22 +45,24 @@ const PageMain = () => {
 						currentMilisec={currentMilisec}
 					/>
 				)}
-				<Button text="Start" handleButton={setStartAll} />
-				<ButtonReset
-					text="Reset"
-					handleValueMain={setGlobalMilisec}
-					handleValueCurrent={setCurrentMilisec}
-				/>
+				<div className="buttons">
+					<Button text="Start" handleButton={setStartAll} />
+					<ButtonReset
+						text="Reset"
+						handleValueMain={setGlobalMilisec}
+						handleValueCurrent={setCurrentMilisec}
+					/>
 
-				<ButtonLap
-					text="Lap"
-					handleValueCurrent={setCurrentMilisec}
-					lapTime={lapTime}
-					addLapTime={setTimes}
-					hiddenTable={hidden}
-				/>
+					<ButtonLap
+						text="Lap"
+						handleValueCurrent={setCurrentMilisec}
+						lapTime={lapTime}
+						addLapTime={setTimes}
+						hiddenTable={hidden}
+					/>
 
-				<ButtonStop hide={hide} />
+					<ButtonStop hide={hide} />
+				</div>
 
 				{!hidden && <Table times={times} />}
 				{hidden && <Summary times={times} />}

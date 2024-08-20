@@ -1,0 +1,70 @@
+.pageMainHeading {
+	margin: 20px;
+	color: $redColor;
+	font-size: 2.5rem;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
+
+.pageMain {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 50px;
+	min-width: 800px;
+	background-image: radial-gradient(
+		circle,
+		rgb(43, 44, 46) 0%,
+		rgb(25, 25, 25) 93%
+	);
+	border-radius: 8px;
+	box-shadow: 5px 5px 10px black;
+	color: #fff;
+}
+
+.content {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 200px;
+	grid-template-areas:
+		"totalTimeHeading table"
+		"totalTime table"
+		"currentTimeHeading table"
+		"currentTime table"
+		"btn table"
+		". table"
+		"summary summary";
+}
+
+.totalTimeHeading {
+	grid-area: totalTimeHeading;
+}
+
+.totalTime {
+	grid-area: totalTime;
+}
+
+.currentTimeHeading {
+	grid-area: currentTimeHeading;
+	font-size: 2rem;
+}
+
+.currentTime {
+	grid-area: currentTime;
+}
+
+.totalTimeHeading,
+.currentTimeHeading {
+	font-size: 1.2rem;
+	color: $grayColor;
+}
+
+.totalTime,
+.currentTime {
+	margin: 10px 0 20px 0;
+	color: $redColor;
+	font-size: 1.6rem;
+}

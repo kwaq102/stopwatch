@@ -1,4 +1,5 @@
 import { formatTime } from "../assets/functions";
+import { ButtonBackToHome } from "./ButtonBackToHome";
 
 type Props = {
 	times: number[];
@@ -20,24 +21,31 @@ const Summary = ({ times }: Props) => {
 
 	return (
 		<>
-			<div>
-				<p>Total time: {formatTime(summaryTime())}</p>
-				<p>Average time lap: {formatTime(averageTime())}</p>
-				<p>The fastest time lap: {formatTime(times[0])}</p>
-				<p>The slowest time lap: {formatTime(times[times.length - 1])}</p>
-				<p>Number of laps: {times.length}</p>
-				<div>
+			<div className="summary">
+				<p>
+					Total time: <span>{formatTime(summaryTime())}</span>
+				</p>
+				<p>
+					Average time lap: <span>{formatTime(averageTime())}</span>
+				</p>
+				<p>
+					The fastest time lap: <span>{formatTime(times[0])}</span>
+				</p>
+				<p>
+					The slowest time lap:{" "}
+					<span>{formatTime(times[times.length - 1])}</span>
+				</p>
+				<p className="summaryLaps">
+					Number of laps: <span>{times.length}</span>
+				</p>
+				<div className="summaryTimes">
 					{times.map((time, i) => (
-						<p key={i}>{formatTime(time)}</p>
+						<p key={i}>
+							{i + 1}: {formatTime(time)}
+						</p>
 					))}
 				</div>
-				<button
-					onClick={() => {
-						window.location.reload();
-					}}
-				>
-					Refresh
-				</button>
+				<ButtonBackToHome />
 			</div>
 		</>
 	);

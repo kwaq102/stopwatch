@@ -21,7 +21,11 @@ const ButtonLap = ({
 		handleValueCurrent(0);
 	};
 
-	return <button onClick={addLap}>{text}</button>;
+	return (
+		<button className="btn lap" onClick={addLap}>
+			{text}
+		</button>
+	);
 };
 
 export { ButtonLap };

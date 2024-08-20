@@ -3,7 +3,11 @@ type Props = {
 };
 
 const ButtonStop = ({ hide }: Props) => {
-	return <button onClick={hide}>STOP</button>;
+	return (
+		<button className="btn stop" onClick={hide}>
+			STOP
+		</button>
+	);
 };
 
 export { ButtonStop };

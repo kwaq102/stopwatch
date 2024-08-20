@@ -26,8 +26,8 @@ const CurrentCounter = ({
 
 	return (
 		<>
-			<h2>Current time:</h2>
-			<p>{formatTime(currentMilisec)}</p>
+			<h2 className="currentTimeHeading">Current time:</h2>
+			<p className="currentTime">{formatTime(currentMilisec)}</p>
 		</>
 	);
 };

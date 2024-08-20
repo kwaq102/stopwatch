@@ -11,7 +11,11 @@ const ButtonReset = ({ text, handleValueMain, handleValueCurrent }: Props) => {
 		handleValueMain(0);
 		handleValueCurrent(0);
 	};
-	return <button onClick={resetValue}>{text}</button>;
+	return (
+		<button className="btn reset" onClick={resetValue}>
+			{text}
+		</button>
+	);
 };
 
 export { ButtonReset };

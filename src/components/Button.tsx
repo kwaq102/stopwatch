@@ -9,7 +9,11 @@ const Button = ({ text, handleButton }: Props) => {
 	const startStopCounter = () => {
 		handleButton(true);
 	};
-	return <button onClick={startStopCounter}>{text}</button>;
+	return (
+		<button className="btn start" onClick={startStopCounter}>
+			{text}
+		</button>
+	);
 };
 
 export { Button };

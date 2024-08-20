@@ -7,7 +7,7 @@ type Props = {
 
 const Table = ({ times }: Props) => {
 	return (
-		<table>
+		<table className="table">
 			<thead>
 				<tr>
 					<th scope="col">Laps</th>

@@ -1,0 +1,57 @@
+.buttons {
+	grid-area: btn;
+}
+
+.btn {
+	margin-right: 5px;
+	padding: 10px 20px;
+	min-width: 100px;
+	color: #fff;
+	font-size: 16px;
+	background-color: transparent;
+	border: 1px solid $redColor;
+	border-radius: 5px;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: background-color 0.3s;
+
+	&:hover {
+		background-color: $redColor;
+		outline: none;
+	}
+}
+
+.start {
+	grid-area: start;
+	border: 1px solid rgb(19, 161, 0);
+	&:hover {
+		background-color: rgb(19, 161, 0);
+	}
+}
+
+.reset {
+	grid-area: reset;
+	border: 1px solid rgb(161, 118, 0);
+	&:hover {
+		background-color: rgb(161, 118, 0);
+	}
+}
+
+.lap {
+	grid-area: lap;
+	border: 1px solid rgb(15, 19, 214);
+	&:hover {
+		background-color: rgb(15, 19, 214);
+	}
+}
+
+.stop {
+	grid-area: stop;
+}
+
+.refresh {
+	border: 1px solid rgb(250, 228, 27);
+	&:hover {
+		background-color: rgb(250, 228, 27);
+	}
+}
