@@ -15,8 +15,6 @@ const PageMain = () => {
 	const [currentMilisec, setCurrentMilisec] = useState(0);
 
 	const [fullTime, setFullTime] = useState("");
-
-	//Array with lap times by milliseconds
 	const [times, setTimes] = useState<number[]>([]);
 
 	const lapTime = currentMilisec;
@@ -28,8 +26,7 @@ const PageMain = () => {
 
 	return (
 		<div>
-			<div>TEST {fullTime}</div>
-			<h1>Strona główna</h1>
+			<h1>Home</h1>
 			<main>
 				{!hidden && (
 					<MainCounter

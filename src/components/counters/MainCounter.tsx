@@ -27,10 +27,8 @@ const MainCounter = ({
 		setMilliseconds(0);
 	}, []);
 
-	//TODO to można spróbować to jednej funkcji to samo jest w CurrentCounter
 	const handleStopwatch = () => {
 		if (!startMainCounter) return;
-
 		handleGlobalMilisec(prev => prev + 10);
 	};
 

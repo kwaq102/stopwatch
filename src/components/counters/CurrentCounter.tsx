@@ -2,16 +2,12 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 import { formatTime } from "../../assets/functions";
 type Props = {
 	startCurrentCounter: boolean;
-
 	currentMilisec: number;
 	handleCurrentMilisec: Dispatch<SetStateAction<number>>;
 };
 
-// TODO ZROBIĆ WŁASNY HOOK LICZNIKA I GO UŻYĆ (TAK JAK NP. W LEKCJI 60 O WŁASNYCH HOOKACH)
-
 const CurrentCounter = ({
 	startCurrentCounter,
-
 	currentMilisec,
 	handleCurrentMilisec,
 }: Props) => {
@@ -25,7 +21,6 @@ const CurrentCounter = ({
 
 	const handleStopwatch = () => {
 		if (!startCurrentCounter) return;
-
 		handleCurrentMilisec(prev => prev + 10);
 	};
 

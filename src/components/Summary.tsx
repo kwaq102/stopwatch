@@ -9,29 +9,23 @@ const Summary = ({ times }: Props) => {
 
 	const summaryTime = () => {
 		let allTimes = 0;
-
 		allTimes = times.reduce((prevEl, currentEl) => prevEl + currentEl, 0);
-
 		return allTimes;
 	};
 
-	// TODO zrobić wszystko w głównym komponencie zamienić na milisecundy i pracować na milisec.
 	const averageTime = () => {
 		const fullTime = summaryTime();
-
 		return Math.round(fullTime / times.length);
 	};
 
 	return (
 		<>
 			<div>
-				<p>czas łączny: {formatTime(summaryTime())}</p>
-				<p>średni czas okrążenia: {formatTime(averageTime())}</p>
-				<p>najszybszy czas okrążenia: {formatTime(times[0])}</p>
-				<p>
-					najwolniejszy czas okrążenia: {formatTime(times[times.length - 1])}
-				</p>
-				<p>Liczba okrążeń: {times.length}</p>
+				<p>Total time: {formatTime(summaryTime())}</p>
+				<p>Average time lap: {formatTime(averageTime())}</p>
+				<p>The fastest time lap: {formatTime(times[0])}</p>
+				<p>The slowest time lap: {formatTime(times[times.length - 1])}</p>
+				<p>Number of laps: {times.length}</p>
 				<div>
 					{times.map((time, i) => (
 						<p key={i}>{formatTime(time)}</p>
