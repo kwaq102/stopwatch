@@ -68,3 +68,20 @@
 	color: $redColor;
 	font-size: 1.6rem;
 }
+
+@media (max-width: 800px) {
+	.pageMain {
+		min-width: 0;
+		width: 90%;
+		margin: 0 auto;
+	}
+}
+
+@media (max-width: 500px) {
+	.pageMain {
+		width: 100%;
+	}
+	.content {
+		grid-template-columns: 1fr auto;
+	}
+}
